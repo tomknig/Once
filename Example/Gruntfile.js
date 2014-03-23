@@ -12,10 +12,10 @@ module.exports = function(grunt) {
         dest: 'build/<%= pkg.name %>.min.js'
       }
     },
-    phantom: {
+    once: {
       build: {
-        src: 'demo.html',
-        dest: 'build/rendering.html'
+        src: 'src/demo.html',
+        dest: 'build/demo.html'
       }
     }
   });
@@ -24,9 +24,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // load phantom
-  grunt.loadNpmTasks('grunt-phantom');
+  grunt.loadNpmTasks('grunt-once');
 
   // Default task(s).
   grunt.registerTask('default', ['uglify']);
-  grunt.registerTask('render', ['phantom']);
+  grunt.registerTask('renderOnce', ['once']);
 };
