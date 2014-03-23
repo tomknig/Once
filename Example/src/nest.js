@@ -7,12 +7,17 @@ function Nest(elementId, settings) {
     this.args = arguments;
     
     this.render = function () {
-        var newDomElement = document.createElement('p');
-        newDomElement.innerHTML = 'This is all new - but yet everytime same - text';
-        newDomElement.style.color = '#ffaabb';
-        document.getElementById(elementId).appendChild(newDomElement);
+        var that = this;
         
-        this.isRendered(this);
+        //pretend that the domchanges take some time
+        setTimeout(function () {
+            var newDomElement = document.createElement('p');
+            newDomElement.innerHTML = 'This is all new - but yet everytime same - text';
+            newDomElement.style.color = '#ffaabb';
+            document.getElementById(elementId).appendChild(newDomElement);
+
+            that.isRendered();
+        }, 1042);
     };
     
     this.init =  function () {

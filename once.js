@@ -1,14 +1,17 @@
 function Once(scriptId, args) {
     'use strict';
+        
+    //use `grunt-once` api to make changes renderable
+    window.isRenderable = false;
     
     var script = document.getElementById(scriptId),
         numberOfRenderingObjects = 0,
         isRenderingsAreSetUp = false,
-        idx = 0;
+        numberOfRenderedObjects = 0;
     
     this.checkState = function () {
         if (isRenderingsAreSetUp && numberOfRenderingObjects === 0) {
-            window.isOnceFinished = true;
+            window.isRenderable = true;
         }
     };
     
@@ -28,8 +31,8 @@ function Once(scriptId, args) {
             }
         }
         
-        id = object.constructor.name + idx;
-        idx += 1;
+        id = object.constructor.name + numberOfRenderedObjects;
+        numberOfRenderedObjects += 1;
         
         script.innerHTML += 'var ' + id + '=new ' + object.constructor.name + '(' + initer + ');';
         script.innerHTML += id + '.init();';
@@ -39,10 +42,12 @@ function Once(scriptId, args) {
     };
     
     this.init = function () {
-        var object,
+        var callbackObject = this,
+            callbackMethod = function () {
+                callbackObject.renderingDidFinish(this);
+            },
+            object,
             i;
-        
-        window.isOnceFinished = false;
         
         script.innerHTML = '';
         
@@ -50,7 +55,7 @@ function Once(scriptId, args) {
             object = args[i];
             if (object.hasOwnProperty('render')) {
                 numberOfRenderingObjects += 1;
-                object.isRendered = this.renderingDidFinish;
+                object.isRendered = callbackMethod;
                 object.render();
             }
         }
