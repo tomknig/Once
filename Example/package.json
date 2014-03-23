@@ -1,7 +1,7 @@
 {
-  "name": "Ducati",
-  "version": "0.0.1",
-  "description": "Concretize everything",
+  "name": "Once",
+  "version": "0.4.2",
+  "description": "Render static DOM manipulations.",
   "main": "Gruntfile.js",
   "author": "Tom König",
   "license": "MIT",
@@ -9,7 +9,6 @@
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.6.3",
     "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-phantom": "^0.2.0"
+    "grunt-contrib-uglify": "~0.2.2"
   }
 }
