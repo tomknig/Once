@@ -1,0 +1,18 @@
+<html>
+<head></head>
+<body>
+    <div id="myElement21"></div>
+    <div id="myElement42"></div>
+    <script type="text/javascript" src="once.js"></script>
+    <script type="text/javascript" src="nest.js"></script>
+    <script id="myScript">
+    new Once(
+        'myScript',
+        [
+            new Nest('myElement21', {setting: 1}),
+            new Nest('myElement42', {setting: 2})
+        ]
+    );
+    </script>
+</body>
+</html>
