@@ -16,6 +16,6 @@ function Nest(elementId, settings) {
     };
     
     this.init =  function () {
-        document.getElementById(elementId).getElementsByTagName('p').style.backgroundColor = '#ff0000';
+        document.getElementById(elementId).getElementsByTagName('p')[0].style.backgroundColor = '#ff0000';
     };
 }
