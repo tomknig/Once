@@ -15,12 +15,12 @@
 ```
 
 * Feed an array with your renderable objects
-```javascript
+```js
 var renderables = [new Swipe('mySwipe', {a: b}), new Swipe('mySwipe2'), ... ]; //Swipe hast to be renderable
 ```
 
 * Initialize with Once with your renderables:
-```javascript
+```js
 new Once(renderables);
 ```
 ```html
@@ -31,7 +31,7 @@ new Once(renderables);
 
 * There are 4 steps to make any object renderable for Once
 
-```javascript
+```js
 function YourConstructor( ... ) {
     // 1. make sure to include this line
     this.args = arguments;
